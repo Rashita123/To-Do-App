@@ -55,8 +55,8 @@ export default function App() {
   //****Displays task list********/
   const Task = () => {
     return (
-      <div class="todo_tasklist">
-        <ul class="list">
+      <div className="todo_tasklist">
+        <ul className="list">
           {taskList.map((item) => (
             <EachTaskDiv value={item} />
           ))}

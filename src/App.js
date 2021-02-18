@@ -6,6 +6,7 @@ export default function App() {
 
   const [taskList, setTaskList] = useState([]);
 
+  //*********/Add task bar start *******//
   const AddTaskBar = () => {
     function newTaskUpdate(event) {
       newTask = event.target.value;
@@ -33,7 +34,9 @@ export default function App() {
       </div>
     );
   };
+  //********Add task bar ends********/
 
+  //***Template for displaying each task*****/
   const EachTaskDiv = (props) => {
     if (!props.value) return null;
     return (
@@ -41,6 +44,7 @@ export default function App() {
         <input className="checkStrike" type="checkbox" />
         <span className="list_item_text">{props.value}</span>
         <img
+          alt="Delete-icon"
           className="dustbin"
           src="https://img.icons8.com/android/16/000000/delete.png"
         />
@@ -48,6 +52,7 @@ export default function App() {
     );
   };
 
+  //****Displays task list********/
   const Task = () => {
     return (
       <div class="todo_tasklist">
@@ -60,6 +65,7 @@ export default function App() {
     );
   };
 
+  //******** */Main rendering*******/
   return (
     <div className="App">
       <AddTaskBar />

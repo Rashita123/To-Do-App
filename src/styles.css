@@ -13,8 +13,8 @@ body {
 
 .todo {
   background: #003060;
-  width: 100%;
-  padding: 0.5rem;
+  min-width: 100%;
+  padding: 0.5rem 1rem;
   margin-top: 1rem;
   display: inline-block;
   border-radius: 3px;
@@ -22,12 +22,13 @@ body {
 .input {
   border: none;
   background: transparent;
-  height: 20px;
+  height: 30px;
   float: left;
   padding: 5px;
   outline: none;
   width: 60%;
   color: #add8e680;
+  font-size: 17px;
 }
 
 .input:focus {
@@ -36,9 +37,14 @@ body {
 ::placeholder {
   color: #add8e680;
 }
+
+.todo_addtask_input {
+  margin-top: 0.5rem;
+}
+
 .todo_addtask_text {
   color: #add8e6;
-  font-size: 13px;
+  font-size: 20px;
   margin-bottom: 5px;
 }
 
@@ -46,10 +52,12 @@ body {
   float: right;
   padding: 0.3rem 0.5rem;
   border-radius: 1px;
+  height: 30px;
   cursor: pointer;
   outline: none;
   border: 1px solid #0dbab1;
   background: #0dbab1;
+  font-size: 17px;
 }
 
 .list {
@@ -58,12 +66,11 @@ body {
 .list_item {
   background: #00306060;
   padding: 0.5rem;
-  width: 110%;
+  width: 100%;
   margin: 0.5rem -2rem;
   display: flex;
   justify-content: space-between;
 }
-
 .list li input[type="checkbox"] {
   height: 0;
   width: 0;

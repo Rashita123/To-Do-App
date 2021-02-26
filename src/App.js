@@ -71,7 +71,7 @@ export default function App() {
           className="list_item_text"
           style={{
             textDecoration: taskList[props.value] ? "line-through" : "none",
-            color: taskList[props.value] ? "grey" : "black",
+            color: taskList[props.value] ? "#00306080" : "black",
             fontSize: "20px"
           }}
         >

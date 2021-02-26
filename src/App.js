@@ -4,7 +4,7 @@ import { useState } from "react";
 export default function App() {
   var newTask = "";
 
-  const [taskList, setTaskList] = useState([]);
+  const [taskList, setTaskList] = useState({});
 
   //*********/Add task bar start *******//
   const AddTaskBar = () => {
@@ -13,8 +13,14 @@ export default function App() {
     }
 
     function updateTaskList() {
-      setTaskList([...taskList, newTask]);
+      if (newTask === "") return;
+      setTaskList({ ...taskList, [newTask]: false });
     }
+    const CheckIfEnter = (event) => {
+      if (event.keyCode === 13) {
+        updateTaskList();
+      }
+    };
 
     return (
       <div className="todo">
@@ -23,6 +29,7 @@ export default function App() {
           <div className="todo_addtask_input">
             <input
               onChange={newTaskUpdate}
+              onKeyUp={CheckIfEnter}
               className="input"
               placeholder="Eg: Buy Groceries"
             ></input>
@@ -38,13 +45,42 @@ export default function App() {
 
   //***Template for displaying each task*****/
   const EachTaskDiv = (props) => {
+    const removeTaskHandler = (Taskname) => {
+      let resultObj = {};
+      for (key in taskList) {
+        if (key === Taskname) {
+        } else {
+          resultObj[key] = taskList[key];
+        }
+        setTaskList(resultObj);
+      }
+    };
     if (!props.value) return null;
     return (
       <li className="list_item">
-        <input className="checkStrike" type="checkbox" />
-        <span className="list_item_text">{props.value}</span>
+        <input
+          className="checkStrike"
+          checked={taskList[props.value]}
+          type="checkbox"
+          onClick={(event) => {
+            const checkedValue = event.target.checked;
+            setTaskList({ ...taskList, [props.value]: checkedValue });
+          }}
+        />
+        {console.log(taskList)}
+        <span
+          className="list_item_text"
+          style={{
+            textDecoration: taskList[props.value] ? "line-through" : "none",
+            color: taskList[props.value] ? "grey" : "black",
+            fontSize: "20px"
+          }}
+        >
+          {props.value}
+        </span>
         <img
           alt="Delete-icon"
+          onClick={() => removeTaskHandler(props.value)}
           className="dustbin"
           src="https://img.icons8.com/android/16/000000/delete.png"
         />
@@ -57,7 +93,7 @@ export default function App() {
     return (
       <div className="todo_tasklist">
         <ul className="list">
-          {taskList.map((item) => (
+          {Object.keys(taskList).map((item) => (
             <EachTaskDiv value={item} />
           ))}
         </ul>

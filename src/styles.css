@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap");
 body {
   margin: 0;
   padding: 0;
@@ -6,6 +7,7 @@ body {
   justify-content: center;
   box-sizing: border-box;
   overflow: hidden;
+  font-family: "Ubuntu", sans-serif;
 }
 .App {
   width: 400px;

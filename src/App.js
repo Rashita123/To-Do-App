@@ -34,7 +34,7 @@ export default function App() {
               placeholder="Eg: Buy Groceries"
             ></input>
             <button onClick={updateTaskList} className="addtask_button">
-              +Add Task
+              + Add Task
             </button>
           </div>
         </div>
@@ -67,7 +67,6 @@ export default function App() {
             setTaskList({ ...taskList, [props.value]: checkedValue });
           }}
         />
-        {console.log(taskList)}
         <span
           className="list_item_text"
           style={{
